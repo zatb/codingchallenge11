@@ -6,10 +6,7 @@
     <title>Coding Challenge 11</title>
     <style>
         .bar {
-            fill: steelblue;
-        }
-        .bar:hover {
-            fill: green;
+            fill: darkblue;
         }
         text {
             fill: white;
@@ -43,6 +40,21 @@
             const x = d3.scaleLinear()
                 .domain([0, d3.max(data)])
                 .range([50, width]);    
+
+            // For each data point, create a <g> element within the SVG that will house both a <rect> for the bar and a <text> for the label.
+            const bar = svg.selectAll("g")
+                .data(data)
+                .enter().append("g")
+                .attr("transform", (d, i) => `translate(0,${i * (barHeight + barMargin)})`);
+
+            bar.append("rect")
+                .attr("class", "bar")
+                .attr("width", 0)
+                .attr("height", barHeight)
+                .transition()
+                .duration(600)
+                .ease(d3.easeCubicIn)
+                .attr("width", d => x(d));
         });
     </script>
 </body>
