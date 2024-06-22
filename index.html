@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Challenge 11</title>
+    <style>
+        .bar {
+            fill: steelblue;
+        }
+        .bar:hover {
+            fill: green;
+        }
+        text {
+            fill: white;
+            font-size: 12px;
+            text-anchor: end;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+     
+            const data = [100, 420, 230, 850, 560, 925];
+
+            // Define the dimensions for the SVG container, ensuring adequate space for each bar. Set the width to 500 pixels and the height dynamically based on the number of data points, allowing for a bar height of 20 pixels with a 1-pixel margin between bars.
+            const margin = { top: 20, right: 30, bottom: 40, left: 40 };
+            const width = 500;
+            const barHeight = 20;
+            const barMargin = 1;
+            const height = data.length * (barHeight + barMargin);
+
+            // Initialize an SVG container within the body of your HTML document.
+            const svg = d3.select("body").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+        });
+    </script>
+</body>
+</html>
