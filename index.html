@@ -38,6 +38,11 @@
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
                 .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            // Implement a linear scale for the x-axis using d3.scaleLinear(). Map the dataset's minimum value to 50 pixels and the maximum value to 500 pixels to represent the data proportionally within the container.
+            const x = d3.scaleLinear()
+                .domain([0, d3.max(data)])
+                .range([50, width]);    
         });
     </script>
 </body>
